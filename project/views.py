@@ -19,7 +19,7 @@ def index(request):
 def main(request):
 
     # events = Event.objects.order_by("start_time")
-    events = ["event1: ", "event2: --"]
+    events = ["event_alpha: ", "event_beta: --"]
     results = [1, 2, 3]
     context = {"events": events, "results": results}
     return render(request, "project/main.html", context)
