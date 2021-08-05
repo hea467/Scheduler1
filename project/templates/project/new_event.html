@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      {%if user.is_authenticated %} Hello, {{user.username}}.
+      <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
+      <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
+      <a href="{% url 'project:index' %}"> Click here to view events </a> -----
+      <a href="{% url 'project:main' %}">
+        Click here for your arranged schedule
+      </a>
+      -----
+      <a href="{% url 'project:new_event' %}">
+        Click here to add a new event
+      </a>
+    </p>
+    <p>Add a new event:</p>
+
+    <form action="{%url 'project:new_event'%}" method="post">
+      <! --- Attack safety insurance & render form as paragraph --->
+      {%csrf_token%}
+      <p>Name of the event {{form.description}}</p>
+      <p>
+        Starting time of the event (24h) (e.g 8.00, 20.00) {{form.start_time}}
+      </p>
+      <p>Ending time of the event (24h) (e.g 8.00, 20.00) {{form.end_time}}</p>
+      <button name="submit">Add an Event</button>
+    </form>
+  </body>
+</html>

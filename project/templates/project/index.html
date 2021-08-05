@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      {%if user.is_authenticated %} Hello, {{user.username}}.
+      <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
+      <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
+      <a href="{% url 'project:index' %}"> Click here to view events </a> -----
+      <a href="{% url 'project:main' %}">
+        Click here for your arranged schedule
+      </a>
+      -----
+      <a href="{% url 'project:new_event' %}">
+        Click here to add a new event
+      </a>
+    </p>
+
+    <h2>Welcome to your scheduler</h2>
+    <p>Events</p>
+    {%for event in events%}
+    <li>{{event}} {{event.start_time}} ---- {{event.end_time}}</li>
+    {%endfor%}
+    <p>
+      <a href="{% url 'project:main' %}">
+        Click here for your arranged schedule
+      </a>
+    </p>
+    <p>
+      <a href="{% url 'project:new_event' %}">
+        Click here to add a new event
+      </a>
+    </p>
+  </body>
+</html>

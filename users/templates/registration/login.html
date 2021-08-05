@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      {%if user.is_authenticated %} Hello, {{user.username}}. {%else%}
+      <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
+      <a href="{% url 'project:index' %}"> Click here to view events </a> -----
+      <a href="{% url 'project:main' %}">
+        Click here for your arranged schedule
+      </a>
+      -----
+      <a href="{% url 'project:new_event' %}">
+        Click here to add a new event
+      </a>
+    </p>
+
+    {%if form.errors%}
+    <p>Your username and password didn't match. Try again</p>
+    {% endif %}
+    <form method="post" action="{%url 'users:login' %}">
+      {%csrf_token%} {{form.as_p}}
+
+      <button name="submit">Log in</button>
+      <input type="hidden" name="next" value="{% url 'project:index' %}" />
+    </form>
+  </body>
+</html>

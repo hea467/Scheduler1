@@ -1,0 +1,10 @@
+<p>
+  {%if user.is_authenticated %} Hello, {{user.username}}.
+  <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
+  <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
+  <a href="{% url 'project:index' %}"> Click here to view events </a> -----
+  <a href="{% url 'project:main' %}"> Click here for your arranged schedule </a>
+  -----
+  <a href="{% url 'project:new_event' %}"> Click here to add a new event </a>
+</p>
+<p>You have been logged out. Thanks for vising!</p>
