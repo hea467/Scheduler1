@@ -8,9 +8,12 @@
   </head>
   <body>
     <p>
-      {%if user.is_authenticated %} Hello, {{user.username}}. {%else%}
+      {%if user.is_authenticated %} Hello, {{user.username}}.
+      <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
+      <a><a href="{% url 'users:register' %}">Register</a> --OR--</a>
       <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
-      <a href="{% url 'project:index' %}"> Click here to view events </a> -----
+      <a href="{% url 'project:listevents' %}"> Click here to view events </a>
+      -----
       <a href="{% url 'project:main' %}">
         Click here for your arranged schedule
       </a>
@@ -19,7 +22,6 @@
         Click here to add a new event
       </a>
     </p>
-
     {%if form.errors%}
     <p>Your username and password didn't match. Try again</p>
     {% endif %}

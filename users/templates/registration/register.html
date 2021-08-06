@@ -23,17 +23,10 @@
       </a>
     </p>
 
-    <p>Scheduler</p>
-    <p>
-      Here's your arranged schedule, arranged by the starting time of each event
-    </p>
-
-    <ul>
-      {%for event in events%}
-      <li><b>{{event}} </b>: {{event.start_time}} --- {{event.end_time}}</li>
-      {%empty%}
-      <li>Nothing added yet!</li>
-      {%endfor%}
-    </ul>
+    <form method="post" action="{% url 'users:register' %}">
+      {%csrf_token%} {{ form.as_p}}
+      <button name="submit">register</button>
+      <input type="hidden" name="next" value="{% url 'project:index' %}" />
+    </form>
   </body>
 </html>

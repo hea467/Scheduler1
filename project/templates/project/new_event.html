@@ -10,8 +10,10 @@
     <p>
       {%if user.is_authenticated %} Hello, {{user.username}}.
       <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
+      <a><a href="{% url 'users:register' %}">Register</a> --OR--</a>
       <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
-      <a href="{% url 'project:index' %}"> Click here to view events </a> -----
+      <a href="{% url 'project:listevents' %}"> Click here to view events </a>
+      -----
       <a href="{% url 'project:main' %}">
         Click here for your arranged schedule
       </a>
@@ -20,6 +22,7 @@
         Click here to add a new event
       </a>
     </p>
+
     <p>Add a new event:</p>
 
     <form action="{%url 'project:new_event'%}" method="post">
