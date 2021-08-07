@@ -1,13 +1,37 @@
-<p>
-  {%if user.is_authenticated %} Hello, {{user.username}}.
-  <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
-  <a><a href="{% url 'users:register' %}">Register</a> --OR--</a>
-  <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
-  <a href="{% url 'project:listevents' %}"> Click here to view events </a>
-  -----
-  <a href="{% url 'project:main' %}"> Click here for your arranged schedule </a>
-  -----
-  <a href="{% url 'project:new_event' %}"> Click here to add a new event </a>
-</p>
+{% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'project/style.css' %}"
+/>
+
+<div class="container">
+  <div class="menu">
+    <div class="menu-link">
+      {%if user.is_authenticated %} Hello, {{user.username}}.
+      <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
+      <a><a href="{% url 'users:register' %}">Register</a> --OR--</a>
+      <a href="{% url 'users:login' %}">Login</a> {%endif%}
+    </div>
+
+    <div class="menu-link">
+      <a href="{% url 'project:listevents' %}"> Click here to view events </a>
+    </div>
+
+    <div class="menu-link">
+      <a href="{% url 'project:main' %}">
+        Click here for your arranged schedule
+      </a>
+    </div>
+
+    <div class="menu-link">
+      <a href="{% url 'project:new_event' %}">
+        Click here to add a new event
+      </a>
+    </div>
+  </div>
+</div>
 
 <p>You have been logged out. Thanks for vising!</p>
+
+<div class="home"><a href="{% url 'project:index' %}">Home</a></div>

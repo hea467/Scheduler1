@@ -1,0 +1,82 @@
+.menu {
+  display: flex;
+  padding: 15px;
+  padding-right: 100px;
+  padding-left: 100px;
+  justify-content: space-between;
+}
+
+.menu > div {
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+.menu-link {
+  height: 20px;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.5s;
+}
+
+.menu-link a {
+  color: rgb(76, 137, 207);
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.menu-link:hover {
+  border-bottom: 1px solid darkblue;
+}
+
+.heading {
+  text-align: center;
+  font-family: copperplate, 'Brush Script MT', fantasy;
+}
+
+.description {
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.blog-menu {
+  height: 20px;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.5s;
+}
+
+.blog-menu a {
+  color: rgb(76, 137, 207);
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.blog-menu:hover {
+  border-bottom: 1px solid darkblue;
+}
+
+.home {
+  height: 20px;
+  border-bottom: 1px solid transparent;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.home a {
+  color: rgb(76, 137, 207);
+  text-decoration: none;
+}
+
+.links {
+  text-align: center;
+}
+
+.links a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgb(51, 119, 223);
+  transition: color 0.5s;
+}
+
+.links a:hover {
+  color: rgb(152, 232, 247);
+}

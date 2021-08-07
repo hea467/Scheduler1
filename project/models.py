@@ -10,3 +10,11 @@ class Event(models.Model):
 
     def __str__(self):
         return self.description
+
+
+class Blog(models.Model):
+    topic = models.CharField(max_length=150)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.topic

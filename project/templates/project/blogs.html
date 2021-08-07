@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'project/style.css' %}"
+    />
+    <title>Student Posts</title>
+  </head>
+  <body>
+    <div class="menu">
+      <div class="blog-menu">
+        <a href="{% url 'project:index' %}"> Home page</a>
+      </div>
+      <div class="blog-menu">
+        <a href="{% url 'project:newblog' %}"> Add a new blog post!</a>
+      </div>
+    </div>
+
+    <div class="heading"><h2>Welcome to Student Blog Posts</h2></div>
+    <p>&nbsp;</p>
+    <div class="description">
+      Welcome to Student Blog Posts
+      <center>
+        <p>
+          This page is created to allow students to have a place to share their
+          learning experience to all the users oline, whether they are a
+          registered user or not. Using this feature, users of this site can
+          read other people's posts as well as login to create new posts. Enjoy!
+        </p>
+      </center>
+    </div>
+    <center>
+      {%for blog in blogs%}
+      <div>
+        <p><b>{{blog.topic}}</b></p>
+        <p>{{blog.content}}</p>
+        <p>&nbsp</p>
+      </div>
+      {%endfor%}
+    </center>
+  </body>
+</html>

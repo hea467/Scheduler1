@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <center>
+      <p>Add a new blog post!</p>
+      <form action="{% url 'project:newblog' %}" method="post">
+        {%csrf_token%}
+        <p>Enter the title of your post here: {{form.topic}}</p>
+        <p>What would like to share?</p>
+        <p>{{form.content}}</p>
+
+        <button name="submit">Add Post</button>
+      </form>
+      <p>
+        <a href="{% url 'project:blog' %}"
+          ><b>Not sure what to write? Go back to posts</b></a
+        >
+      </p>
+    </center>
+  </body>
+</html>

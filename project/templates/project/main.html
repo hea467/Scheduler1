@@ -4,36 +4,73 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'project/style.css' %}"
+    />
+    <title>Main File</title>
   </head>
   <body>
-    <p>
-      {%if user.is_authenticated %} Hello, {{user.username}}.
-      <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
-      <a><a href="{% url 'users:register' %}">Register</a> --OR--</a>
-      <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
-      <a href="{% url 'project:listevents' %}"> Click here to view events </a>
-      -----
-      <a href="{% url 'project:main' %}">
-        Click here for your arranged schedule
-      </a>
-      -----
-      <a href="{% url 'project:new_event' %}">
-        Click here to add a new event
-      </a>
-    </p>
+    <div class="container">
+      <div class="menu">
+        <div class="menu-link">
+          {%if user.is_authenticated %} Hello, {{user.username}}.
+          <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
+          <a><a href="{% url 'users:register' %}">Register</a> --OR--</a>
+          <a href="{% url 'users:login' %}">Login</a> {%endif%}
+        </div>
 
-    <p>Scheduler</p>
-    <p>
-      Here's your arranged schedule, arranged by the starting time of each event
-    </p>
+        <div class="menu-link">
+          <a href="{% url 'project:listevents' %}"> view events </a>
+        </div>
 
-    <ul>
-      {%for event in events%}
-      <li><b>{{event}} </b>: {{event.start_time}} --- {{event.end_time}}</li>
-      {%empty%}
-      <li>Nothing added yet!</li>
-      {%endfor%}
-    </ul>
+        <div class="menu-link">
+          <a href="{% url 'project:main' %}"> arranged schedule </a>
+        </div>
+
+        <div class="menu-link">
+          <a href="{% url 'project:new_event' %}"> add new event </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="heading"><p><h2>Welcome to Your Scheduler</p></h2></div>
+    <div class="description">
+      <p>
+        <b>Here's your arranged schedule, optimized to contain the most number of events you can attend!</b>
+      </p>
+
+      <ul>
+        {%for event in events%}
+
+          <p><b style="color: dodgerblue">{{event}} </b>: {{event.start_time}} ---
+          {{event.end_time}}</p>
+        {%empty%}
+        <p>Nothing added yet!</p>
+        {%endfor%}
+      </ul>
+
+      {%if invalid_events%}
+      <p>The following events time are not valid inputs!</p>
+      <ul>
+        {%for invalid_event in invalid_events%}
+        <li>
+          <b>{{invalid_event}} </b>: {{invalid_event.start_time}} ---
+          {{invalid_event.end_time}}
+        </li>
+      </ul>
+      {%endfor%} {%endif%}
+      <p>&nbsp;</p>
+      <p>Want to make changes?</p>
+    </div>
+      <div class="home"><a href="{% url 'project:listevents' %}">View events!</div></a>
+      
+      <div class="home">
+        <p>&nbsp;</p>
+        <a href="{% url 'project:index' %}"> Home </a>
+      </div>
+    
   </body>
 </html>

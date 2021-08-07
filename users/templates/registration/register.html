@@ -4,29 +4,52 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'project/style.css' %}"
+    />
     <title>Document</title>
   </head>
   <body>
-    <p>
-      {%if user.is_authenticated %} Hello, {{user.username}}.
-      <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
-      <a><a href="{% url 'users:register' %}">Register</a> --OR--</a>
-      <a href="{% url 'users:login' %}">Login</a> {%endif%} -----
-      <a href="{% url 'project:listevents' %}"> Click here to view events </a>
-      -----
-      <a href="{% url 'project:main' %}">
-        Click here for your arranged schedule
-      </a>
-      -----
-      <a href="{% url 'project:new_event' %}">
-        Click here to add a new event
-      </a>
-    </p>
+    <div class="container">
+      <div class="menu">
+        <div class="menu-link">
+          {%if user.is_authenticated %} Hello, {{user.username}}.
+          <a href="{% url 'users:logout' %}"> Log out</a> {%else%}
+          <a><a href="{% url 'users:register' %}">Register</a> --OR--</a>
+          <a href="{% url 'users:login' %}">Login</a> {%endif%}
+        </div>
+
+        <div class="menu-link">
+          <a href="{% url 'project:listevents' %}">
+            Click here to view events
+          </a>
+        </div>
+
+        <div class="menu-link">
+          <a href="{% url 'project:main' %}">
+            Click here for your arranged schedule
+          </a>
+        </div>
+
+        <div class="menu-link">
+          <a href="{% url 'project:new_event' %}">
+            Click here to add a new event
+          </a>
+        </div>
+      </div>
+    </div>
 
     <form method="post" action="{% url 'users:register' %}">
       {%csrf_token%} {{ form.as_p}}
       <button name="submit">register</button>
       <input type="hidden" name="next" value="{% url 'project:index' %}" />
     </form>
+    <div class="home">
+      <p>&nbsp;</p>
+      <a href="{% url 'project:index' %}"> Home </a>
+    </div>
   </body>
 </html>
