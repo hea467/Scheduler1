@@ -8,4 +8,4 @@ The Student Blog feature allows users to share their online learning experience.
 To use Scheduler, visit the link below:
 https://tiffany467.pythonanywhere.com/
 
-
+---- 2021 August Hackathon Project ----
